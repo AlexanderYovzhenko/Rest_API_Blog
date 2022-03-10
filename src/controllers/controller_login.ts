@@ -1,15 +1,5 @@
-let users = [];
 import jwt from 'jsonwebtoken';
-
-const getUserLogin = (login) => {
-  const user = users.filter(user => user.login === login);
-
-  if (user.length > 0) {
-    return user[0];
-  } else {
-    return null;
-  };
-}
+import { addUserLogin, getUserLogin } from '../database/user_database';
 
 const signToken = async (login: string, password: string) => {
   const user = await getUserLogin(login);
@@ -28,14 +18,15 @@ const signToken = async (login: string, password: string) => {
   }
 };
 
-export const addUser = (data) => {
+export const addUser = async (data) => {
   const { login } = data;
-  if (getUserLogin(login)) {
+  if (await getUserLogin(login)) {
     return 'login is busy';
   } else {
-    users.push(data);
-    return 'User created'
+    await addUserLogin(data);
+    return 'User created';
   };
+  
 };
 
 export const entryUser = async (data) => {

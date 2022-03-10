@@ -9,8 +9,8 @@ routerLogin.get('/login', async (req, res) => {
   res.send(result);
 });
 
-routerLogin.post('/login/reg', (req, res) => {
+routerLogin.post('/login/reg', async (req, res) => {
   const data = req.body;
-  const result = addUser(data);
+  const result = await addUser(data);
   res.send(result);
 });
