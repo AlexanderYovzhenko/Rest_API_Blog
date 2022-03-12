@@ -4,6 +4,7 @@
   "description": "blog on node.js(express)",
   "main": "server.ts",
   "scripts": {
+    "start": "npm run docker:postgres && npm run start:dev",
     "start:dev": "nodemon src/server.ts",
     "start:prod": "npm run migrations:run && npx ts-node src/server.ts",
     "migrations:run": "npm run typeorm -- migration:run",
