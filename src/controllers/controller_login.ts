@@ -24,7 +24,7 @@ export const addUser = async (data) => {
     return 'login is busy';
   } else {
     await addUserLogin(data);
-    return 'User created';
+    return await getUserLogin(login);
   };
   
 };

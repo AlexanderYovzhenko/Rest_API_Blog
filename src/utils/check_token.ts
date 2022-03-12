@@ -3,9 +3,9 @@ import jwt from 'jsonwebtoken';
 export const checkToken = (req, res, next) => {
   const path = req.originalUrl;
 
-  const autHeader = req.headers.authorization;
+  const autHeader = req.headers.authorization || req.headers.sw_authorization;
 
-  if (path === '/login' || path === '/login/reg' || path.includes('/doc', 0) || path === '/')
+  if (path === '/login' || path === '/login/reg' || path.includes('/docs', 0) || path === '/')
     return next();
 
   if (autHeader === undefined) {

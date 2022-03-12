@@ -1,27 +1,25 @@
-let db = [{id: 1}];
+import { addRecordDb, checkAuthorRecordDb, deleteRecordDb, getRecordDb, getRecordOneDb, putRecordDb } from "../database/record_database";
 
-export const getRecord = () => {
-  return db;
+export const getRecord = async () => {
+  return await getRecordDb();
 };
 
-export const getRecordOne = (id) => {
-  return db.filter(el => +el.id === +id);
+export const getRecordOne = async (id) => {
+  return await getRecordOneDb(id);
 };
 
-export const addRecord = (data) => {
-  const date = new Date();
-  data.date = date;
-  db.push(data);
-  return data;
+export const addRecord = async (data) => {
+  return await addRecordDb(data); 
 };
 
-export const putRecord = (id, data) => {
-  const date = new Date();
-  data.date = date;
-  db = db.map(el => el.id === id ? data : el);
-  return getRecordOne(id);
+export const putRecord = async (id, data) => {
+  return await putRecordDb(id, data);
 };
 
-export const deleteRecord = (id) => {
-  db = db.filter(el => el.id !== id);
+export const deleteRecord = async (id) => {
+ return await deleteRecordDb(id);
+};
+
+export const checkAuthorRecord = async (id, author) => {
+  return await checkAuthorRecordDb(id, author);
 };
