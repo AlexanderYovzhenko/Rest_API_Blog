@@ -4,7 +4,7 @@
   "description": "blog on node.js(express)",
   "main": "server.ts",
   "scripts": {
-    "start": "docker run -dp 5432:5432 --rm -e POSTGRES_HOST_AUTH_METHOD=trust postgres && npx ts-node src/server.ts"
+    "start": "docker login --postgres=_ --root=$(heroku auth:token) registry.heroku.com && npx ts-node src/server.ts"
   },
   "repository": {
     "type": "git",
