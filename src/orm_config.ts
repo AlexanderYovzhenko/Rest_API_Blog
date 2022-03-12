@@ -8,6 +8,11 @@ const config: ConnectionOptions = {
   username: 'rwsgndpgmlpckv',
   password: '10a0795ba77b58ef34755956aa379fb33bb441f2e6db36f2e63c637c7c3c6dec',
   database: 'd3hcg5j8b3hhmf',
+  extra: {
+    ssl: {
+      rejectUnauthorized: false
+    }
+  },
   dropSchema: true,
   logging: true,
   synchronize: false,
