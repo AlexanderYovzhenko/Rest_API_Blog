@@ -31,7 +31,7 @@ server.use('/docs', swaggerUi.serve, swaggerUi.setup(openapiSpecification));
 server.use(express.json());
 server.use(bodyParser.urlencoded({ extended: true }));
 
-const PORT = 8080;
+const PORT = 3000;
 
 createConnection(config).then(async connection => {
   console.log("Connected to DB");
