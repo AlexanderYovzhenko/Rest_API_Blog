@@ -4,7 +4,8 @@
   "description": "blog on node.js(express)",
   "main": "server.ts",
   "scripts": {
-    "start": "npx ts-node src/server.ts"
+    "start": "npx ts-node src/server.ts",
+    "postinstall":"tsc"
   },
   "repository": {
     "type": "git",
@@ -23,6 +24,9 @@
     "url": "https://github.com/GoldenManBel/Rest_API_Blog/issues"
   },
   "homepage": "https://github.com/GoldenManBel/Rest_API_Blog#readme",
+  "engines":{
+    "node":"16.13.0"
+ },
   "devDependencies": {
     "nodemon": "^2.0.15"
   },
