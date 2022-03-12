@@ -4,13 +4,7 @@
   "description": "blog on node.js(express)",
   "main": "server.ts",
   "scripts": {
-    "start": "npm run docker:postgres && npm run start:dev",
-    "start:dev": "nodemon src/server.ts",
-    "start:prod": "npm run migrations:run && npx ts-node src/server.ts",
-    "migrations:run": "npm run typeorm -- migration:run",
-    "migration:generate": "npm run typeorm migration:generate -- -n migration",
-    "typeorm": "npx node --require ts-node/register ./node_modules/typeorm/cli.js --config src/orm_config.ts",
-    "docker:postgres": "docker run -dp 5432:5432 --rm -e POSTGRES_HOST_AUTH_METHOD=trust postgres"
+    "start": "docker run -dp 5432:5432 --rm -e POSTGRES_HOST_AUTH_METHOD=trust postgres && npx ts-node src/server.ts",
   },
   "repository": {
     "type": "git",
