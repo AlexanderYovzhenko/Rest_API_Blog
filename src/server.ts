@@ -4,12 +4,14 @@ import bodyParser from 'body-parser';
 import { createConnection } from 'typeorm';
 import swaggerUi from 'swagger-ui-express';
 import swaggerDoc from 'swagger-jsdoc';
+import fileUpload from 'express-fileupload';
 
 import { router } from './routers/router';
 import { routerLogin } from './routers/router_login';
 import { checkToken } from './utils/check_token';
-
+import { routerFile } from "./routers/router_file";
 import config from './orm_config';
+
 
 const server = express();
 
@@ -30,6 +32,9 @@ server.use('/docs', swaggerUi.serve, swaggerUi.setup(openapiSpecification));
 
 server.use(express.json());
 server.use(bodyParser.urlencoded({ extended: true }));
+server.use(fileUpload({
+  createParentPath: true
+}));
 
 const PORT = 3000;
 
@@ -50,3 +55,4 @@ server.use(function(err, req, res, next) {
 server.use(checkToken);
 server.use(routerLogin);
 server.use(router);
+server.use(routerFile);

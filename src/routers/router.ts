@@ -1,5 +1,6 @@
 import { Router } from 'express';
 import { addRecord, checkAuthorRecord, deleteRecord, getRecord, getRecordOne, putRecord } from '../controllers/controller';
+import { filePath } from '../utils/file_path';
 
 export const router = Router();
 
@@ -104,6 +105,7 @@ router.get('/records', async (_, res) => {
 router.get('/records/:id', async (req, res) => {
   const { id } = req.params;
   const result = await getRecordOne(id);
+ 
   res.set('Content-Type', 'application/json');
   res.status(200);
   res.send(result);
@@ -165,7 +167,9 @@ router.get('/records/:id', async (req, res) => {
 router.post('/records', async (req, res) => {
   const data = req.body;
   data.date = new Date();
-  if (typeof data.author === 'string' && typeof data.message === 'string') {
+  data.fileName = filePath[filePath.length - 1] || '';
+
+  if (typeof data.author === 'string' && typeof data.message === 'string') { 
     const result = await addRecord(data);
     res.set('Content-Type', 'application/json');
     res.status(201);
@@ -238,6 +242,8 @@ router.put('/records/:id', async (req, res) => {
   const { id } = req.params;
   const data = req.body;
   data.date = new Date();
+  data.fileName = filePath[filePath.length - 1] || '';
+  
   if (typeof data.author === 'string' && typeof data.message === 'string') {
     const { author } = data;
     if (await checkAuthorRecord(id, author)) {

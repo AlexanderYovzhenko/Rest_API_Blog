@@ -15,6 +15,9 @@ export class Record {
   @Column()
   author!: string;
 
+  @Column()
+  fileName?: string;
+
   @ManyToOne(() => User, user => user.record)
   user: User;
 }
