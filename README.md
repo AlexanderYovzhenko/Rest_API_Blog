@@ -1,1 +1,22 @@
-# http://rest-api-blog-node.herokuapp.com/
+# Rest_API_Blog
+
+## Downloading
+
+```
+git clone https://github.com/GoldenManBel/Rest_API_Blog.git
+```
+
+## Installing NPM modules
+
+```
+npm install
+```
+
+## Running application
+
+```
+npm start
+```
+
+After starting the app on port (3000 as default) you can open
+in your browser OpenAPI documentation by typing http://localhost:3000/docs
