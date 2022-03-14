@@ -15,7 +15,11 @@ npm install
 ## Running application
 
 ```
-npm start
+run docker
+```
+
+```
+npm run start
 ```
 
 After starting the app on port (3000 as default) you can open
